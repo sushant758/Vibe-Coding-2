@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+:root {
+  --background: transparent;
+  --foreground: #1c1917;
+}
+
+body {
+  background: transparent;
+  color: var(--foreground);
+  min-height: 100vh;
+}
