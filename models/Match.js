@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { SPORTS } from '../lib/config';
+import { SPORTS } from '../lib/config.js';
 
 const ScoreEntrySchema = new mongoose.Schema({
   playerId: { type: mongoose.Schema.Types.ObjectId, ref: 'Player', required: true },

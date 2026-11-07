@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { SPORTS } from '../lib/config';
+import { SPORTS } from '../lib/config.js';
 
 const PlayerSchema = new mongoose.Schema({
   name: { type: String, required: true, trim: true },
