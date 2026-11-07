@@ -192,3 +192,4 @@ describe('4. Role Access Enforcement', () => {
     expect(checkRoleAccess('scout', 'scout').status).toBe(200);
   });
 });
+
