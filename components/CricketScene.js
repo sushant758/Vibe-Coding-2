@@ -299,7 +299,7 @@ function CameraLoop() {
     ];
   }, []);
 
-  useFrame(({ clock, camera }) => {
+  useFrame(({ camera, clock }) => {
     // Check prefers-reduced-motion
     if (typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       camera.position.set(-6, 4.5, 14);
@@ -307,7 +307,8 @@ function CameraLoop() {
       return;
     }
 
-    const t = (clock.getElapsedTime() % 75) / 75; // 75 seconds per full loop
+    const elapsed = clock?.elapsedTime ?? (performance.now() * 0.001);
+    const t = (elapsed % 75) / 75; // 75 seconds per full loop
     const point = curve.getPointAt(t);
     camera.position.copy(point);
 

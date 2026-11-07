@@ -1,13 +1,13 @@
 'use client';
 
-import { useState, useEffect, use } from 'react';
-import { useRouter } from 'next/navigation';
+import { useState, useEffect } from 'react';
+import { useRouter, useParams } from 'next/navigation';
 import ConfirmDialog from '@/components/ConfirmDialog';
 import { useToast } from '@/components/Toast';
 
-export default function SessionDetailPage({ params }) {
-  const unwrappedParams = use(params);
-  const sessionId = unwrappedParams.id;
+export default function SessionDetailPage() {
+  const params = useParams();
+  const sessionId = params?.id;
   const router = useRouter();
   const toast = useToast();
 
@@ -18,7 +18,9 @@ export default function SessionDetailPage({ params }) {
   const [markingId, setMarkingId] = useState(null);
 
   useEffect(() => {
-    fetchSession();
+    if (sessionId) {
+      fetchSession();
+    }
   }, [sessionId]);
 
   const fetchSession = async () => {

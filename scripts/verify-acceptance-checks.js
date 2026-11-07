@@ -265,3 +265,4 @@ runAcceptanceChecks().catch((err) => {
   console.error('Acceptance check error:', err);
   process.exit(1);
 });
+

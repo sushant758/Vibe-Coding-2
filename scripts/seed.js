@@ -32,10 +32,16 @@ const PlayerSchema = new mongoose.Schema({
 
 const User = mongoose.models.User || mongoose.model('User', UserSchema);
 const Player = mongoose.models.Player || mongoose.model('Player', PlayerSchema);
+const Session = mongoose.models.Session || mongoose.model('Session', new mongoose.Schema({}, { strict: false }));
+const Match = mongoose.models.Match || mongoose.model('Match', new mongoose.Schema({}, { strict: false }));
 
 async function seed() {
   await mongoose.connect(MONGODB_URI);
   console.log('Connected to MongoDB');
+
+  // Reset sessions and matches to zero
+  await Session.deleteMany({});
+  await Match.deleteMany({});
 
   // 1. Coach
   const coachHash = await bcrypt.hash('Coach@123', 10);
